@@ -17,32 +17,49 @@ function ColorPicker({color, onChange}) {
   );
 }
 
-function Buttons() {
+
+
+//////////////////////////////////////// GRID ////////////////////////////////////////
+
+function Grid({rows, cols}) {
+  return (
+    <table className="table">
+      
+    </table>
+  );
+}
+
+
+
+//////////////////////////////////////// MAIN ////////////////////////////////////////
+
+export default function Main() {
   console.log('start');
-  const [rows, setRows] = useState(0);   // Rows counter
-  const [cols, setCols] = useState(0);   // Columns counter
-  const [color, setColor] = useState("#00FF00");
-  console.log('vars');
+  const [rows, setRows] = useState(0);            // Rows counter
+  const [cols, setCols] = useState(0);            // Columns counter
+  const [color, setColor] = useState("#00FF00");  // Color selected
 
   function AddRow() {
-    setRows(rows + 1);
-    console.log(rows);
+    const newRows = rows + 1;
+    setRows(newRows);
   }
 
   function AddCol() {
-    setCols(cols + 1);
-    console.log(cols);
+    const newCols = cols + 1;
+    setCols(newCols);
   }
 
   function RemRow() {
-    setRows(rows - 1);
-    console.log(rows);
+    const newRows = cols - 1;
+    setRows(newRows);
   }
 
   function RemCol() {
-    setCols(cols - 1);
-    console.log(cols);
+    const newCols = cols - 1;
+    setCols(newCols);
   }
+
+  console.log(rows + " " + cols);
 
   
 
@@ -60,46 +77,36 @@ function Buttons() {
         <Button value={"Color All Uncolored Cells"} onAddRowClick={() => AddRow(0)}/>
         <Button value={"Clear"} onAddRowClick={() => AddRow(0)}/>
       </div>
+      <div className="grid">
+        <Grid />
+      </div>
     </>
   );
 }
 
 
 
-//////////////////////////////////////// GRID ////////////////////////////////////////
-
-function Grid({rows, cols}) {
-
-
-  return (
-    <table className="table">
-      
-    </table>
-  );
-}
-
-
 
 //////////////////////////////////////// MAIN ////////////////////////////////////////
 
-export default function Main() {
-  // const [rows, setRows] = useState(0);   // Rows counter
-  // const [cols, setCols] = useState(0);   // Columns counter
-  // const [color, setColor] = useColor
+// export default function Main() {
+//   // const [rows, setRows] = useState(0);   // Rows counter
+//   // const [cols, setCols] = useState(0);   // Columns counter
+//   // const [color, setColor] = useColor
 
-  // function updateRows(value) {
-  //   setRows(value)
-  // }
+//   // function updateRows(value) {
+//   //   setRows(value)
+//   // }
 
-  return (
-    <div className="main">
-      <div className="buttons">
-        <Buttons/>
-      </div>
+//   return (
+//     <div className="main">
+//       <div className="buttons">
+//         <Buttons/>
+//       </div>
 
-      <div className="grid">
-        <Grid/>
-      </div>
-    </div>
-  );
-}
+//       <div className="grid">
+//         <Grid/>
+//       </div>
+//     </div>
+//   );
+// }
