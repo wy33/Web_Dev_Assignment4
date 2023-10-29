@@ -22,12 +22,18 @@ function ColorPicker({color, onChange}) {
 //////////////////////////////////////// GRID ////////////////////////////////////////
 
 function Grid({ cellColors, onCellClick }) {
-	//let cells = cellColors.map((r) => {
-
-	//})
+	let cells = new Array();
+	for (let i = 0; i < cellColors.length; i++) {
+		cells.push(new Array());
+		for (let j = 0; j < cellColors[i].length; j++) {
+			cells[i].push(
+				<td bgcolor={cellColors[i][j]} onClick={() => onCellClick(i, j)}></td>
+			);
+		}
+	}
 	return (
 		<table className="table">
-			
+			{cells}
 		</table>
 	);
 }
@@ -116,8 +122,10 @@ export default function Main() {
 		console.log(cells[i]);
 	}
 
-	function onTableClick(evt) { //borrowed from DOM Gridmaker, takes the target of the event
-		evt.target.setAttribute("bgcolor", color); //and sets an attribute, just regular JS
+	function onTableClick(i, j) { 
+		newCells = cells;
+		newCells[i][j] = color;
+		setCells(newCells);
 	}
 
 	return (
