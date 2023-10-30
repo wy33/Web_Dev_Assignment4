@@ -148,30 +148,3 @@ export default function Main() {
 		</>
 	);
 }
-
-
-
-
-//////////////////////////////////////// MAIN ////////////////////////////////////////
-
-// export default function Main() {
-//     // const [rows, setRows] = useState(0);     // Rows counter
-//     // const [cols, setCols] = useState(0);     // Columns counter
-//     // const [color, setColor] = useColor
-
-//     // function updateRows(value) {
-//     //     setRows(value)
-//     // }
-
-//     return (
-//         <div className="main">
-//             <div className="buttons">
-//                 <Buttons/>
-//             </div>
-
-//             <div className="grid">
-//                 <Grid/>
-//             </div>
-//         </div>
-//     );
-// }
