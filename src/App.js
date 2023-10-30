@@ -31,9 +31,18 @@ function Grid({ cellColors, onCellClick }) {
 			);
 		}
 	}
+	let content;
 	return (
 		<table className="table">
-			{cells}
+			<tbody>
+				{cells.map((row) => {
+					return (
+						<tr>
+							{row}
+						</tr>
+					)
+				})}
+			</tbody>
 		</table>
 	);
 }
@@ -123,7 +132,8 @@ export default function Main() {
 	}
 
 	function onTableClick(i, j) { 
-		newCells = cells;
+		const newCells = cells;
+		//unsure why this isn't getting the color properly
 		newCells[i][j] = color;
 		setCells(newCells);
 	}
