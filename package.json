@@ -11,7 +11,7 @@
   "name": "vy6j3f",
   "description": null,
   "version": "0.0.0",
-  "homepage": "http://{github-username}.github.io/{repo-name}",
+  "homepage": "http://wy33.github.io/Web_Dev_Assignment4",
   "scripts": {
     "start": "react-scripts start",
     "predeploy" : "npm run build",
