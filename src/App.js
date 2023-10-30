@@ -13,7 +13,7 @@ function Button({value, onAddRowClick}) {
 
 function ColorPicker({color, onChange}) {
 	return (
-		<input type="color" color={color} onChange={onChange}/>
+		<input type="color" value={color} onChange={(c) => onChange(c.target.value)}/>
 	);
 }
 
@@ -146,7 +146,7 @@ export default function Main() {
 				<Button value={"Remove Row"} onAddRowClick={() => RemRow()}/>
 				<Button value={"Remove Column"} onAddRowClick={() => RemCol()}/>
 
-				<ColorPicker value="color" color={color} onChange={setColor}/>
+				<ColorPicker value={color} color={color} onChange={setColor}/>
 
 				<Button value={"Color All Cells"} onAddRowClick={() => AddRow(0)}/>
 				<Button value={"Color All Uncolored Cells"} onAddRowClick={() => AddRow(0)}/>
