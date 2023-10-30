@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 
 
 //////////////////////////////////////// BUTTONS ////////////////////////////////////////
@@ -57,6 +57,7 @@ export default function Main() {
 	const [cols, setCols] = useState(0);						// Columns counter
 	const [color, setColor] = useState("#00FF00");				// Color selected
 	const [cells, setCells] = useState(new Array()); //cells
+	const [, forceUpdate] = useReducer(x => x + 1, 0); //a way to force an update, we were having issues with it re-rendering correctly
 
 	function AddRow() {
 		if (cols === 0 && rows === 0) { //edge case, when no grid, we make it, so both need to be set to 1
@@ -133,9 +134,9 @@ export default function Main() {
 
 	function onTableClick(i, j) { 
 		const newCells = cells;
-		//unsure why this isn't getting the color properly
 		newCells[i][j] = color;
 		setCells(newCells);
+		forceUpdate();
 	}
 
 	return (
