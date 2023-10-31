@@ -3,9 +3,9 @@ import { useReducer, useState } from 'react';
 
 //////////////////////////////////////// BUTTONS ////////////////////////////////////////
 
-function Button({value, onAddRowClick}) {
+function Button({value, onButtonClick}) {
 	return (
-		<button className="button" onClick={onAddRowClick}>
+		<button className="button" onClick={onButtonClick}>
 			{value}
 		</button>
 	);
@@ -139,19 +139,51 @@ export default function Main() {
 		forceUpdate();
 	}
 
+	function colorAll() {
+		const newCells = cells;
+		for (let i = 0; i < newCells.length; i++) {
+			newCells[i].fill(color);
+		}
+		setCells(newCells);
+		forceUpdate();
+	}
+	function colorAllUncolored() {
+		const newCells = cells;
+		for (let i = 0; i < newCells.length; i++) {
+			for (let j = 0; j < newCells[i].length; j++) {
+				if (newCells[i][j] === "#FFFFFF" || newCells[i][j] === "#ffffff" || newCells[i][j] === "ffffff" || newCells[i][j] === "FFFFFF") {
+					newCells[i][j] = color;
+					//note that it should be #FFFFFF but I wanted to cover my bases
+					//e.g. if the user selects white, it will set the colors to #ffffff (lowercase)
+				}
+			}
+		}
+		setCells(newCells);
+		forceUpdate();
+	}
+
+	function clearAll() {
+		const newCells = cells;
+		for (let i = 0; i < newCells.length; i++) {
+			newCells[i].fill("#FFFFFF");
+		}
+		setCells(newCells);
+		forceUpdate();
+	}
+
 	return (
 		<>
 			<div className="buttons">
-				<Button value={"Add Row"} onAddRowClick={() => AddRow()}/>
-				<Button value={"Add Column"} onAddRowClick={() => AddCol()}/>
-				<Button value={"Remove Row"} onAddRowClick={() => RemRow()}/>
-				<Button value={"Remove Column"} onAddRowClick={() => RemCol()}/>
+				<Button value={"Add Row"} onButtonClick={() => AddRow()}/>
+				<Button value={"Add Column"} onButtonClick={() => AddCol()}/>
+				<Button value={"Remove Row"} onButtonClick={() => RemRow()}/>
+				<Button value={"Remove Column"} onButtonClick={() => RemCol()}/>
 
 				<ColorPicker value={color} color={color} onChange={setColor}/>
 
-				<Button value={"Color All Cells"} onAddRowClick={() => AddRow(0)}/>
-				<Button value={"Color All Uncolored Cells"} onAddRowClick={() => AddRow(0)}/>
-				<Button value={"Clear"} onAddRowClick={() => AddRow(0)}/>
+				<Button value={"Color All Cells"} onButtonClick={() => colorAll()}/>
+				<Button value={"Color All Uncolored Cells"} onButtonClick={() => colorAllUncolored()}/>
+				<Button value={"Clear"} onButtonClick={() => clearAll()}/>
 			</div>
 			<div className="grid">
 				<Grid cellColors={cells} onCellClick={onTableClick} />
